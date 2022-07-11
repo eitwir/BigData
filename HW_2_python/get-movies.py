@@ -33,6 +33,7 @@ def get_the_averages():
 
 def get_movies_list(averages):
     result = []
+
     for movies_id, genre, name, year in sorted_list_line(get_data_from_csv('files/movies.csv')):
         result.append([genre, name, year, get_and_check_rating(movies_id, averages)])
     # lambda row: (genre, title, year, rating) —> (genre, -rating, -year, title)
@@ -43,6 +44,7 @@ def get_movies_list(averages):
 def check_year_in_range(year_from, year_to, string):
     pattern = r'\((\d{4})\)'
     result = True
+
     if re.search(pattern, string):
         year = int(re.search(r'\((\d{4})\)', string).group(0)[1:-1])
         if year_from <= year <= year_to:
@@ -50,16 +52,20 @@ def check_year_in_range(year_from, year_to, string):
 
 
 def check_by_regexp(name, string):
+    result = True
+
     pattern = name
     if re.search(pattern, string):
-        return True
+        return result
 
 
 def search_by_genres(genre, arg_genre):
+    result = True
+
     if arg_genre == '' and genre != '(no genres listed)':
-        return True
+        return result
     elif genre == arg_genre and genre != '(no genres listed)':
-        return True
+        return result
 
 
 def get_and_check_rating(movies_id, rating_dict):
@@ -70,12 +76,14 @@ def get_and_check_rating(movies_id, rating_dict):
 
 
 def check_by_n(N, genre, count):
+    result = True
+
     if N is None:
-        return True
+        return result
     else:
         count[genre] += 1
         if count[genre] <= N:
-            return True
+            return result
 
 
 def sorted_list_line(data):
