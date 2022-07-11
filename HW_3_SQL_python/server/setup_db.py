@@ -25,6 +25,7 @@ def create_connection_to_server_and_create_db(host, user, passwd, sql_script_pat
     except Error as e:
         print(f"The error '{e}' occurred")
 
+
 def get_connection_to_db(host, user, passwd, db_name):
     connection = None
     try:
@@ -41,6 +42,7 @@ def get_connection_to_db(host, user, passwd, db_name):
 
     return connection
 
+
 def create_table(connection, sql_script_path):
     try:
         with connection.cursor() as cursor:
@@ -51,7 +53,8 @@ def create_table(connection, sql_script_path):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-def get_list_from_csv_file(csv_file_path):
+
+def get_movies_list(csv_file_path):
     data = []
     with open(csv_file_path, encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=',')
@@ -87,8 +90,6 @@ def fill_rating_table(connection, rating_data, sql_script_path):
         connection.commit()
 
 
-
-
 if __name__ == "__main__":
     create_connection_to_server_and_create_db('localhost',
                                               'root',
@@ -100,7 +101,7 @@ if __name__ == "__main__":
                                       '1234567890',
                                       'movies_db'
                                       )
-    movies = get_list_from_csv_file(r'D:\DE\Homework\HW_3_SQL_python\/files/csv/movies.csv')
+    movies = get_movies_list(r'D:\DE\Homework\HW_3_SQL_python\/files/csv/movies.csv')
     rating = get_list_from_csv_file(r'D:\DE\Homework\HW_3_SQL_python\/files/csv/ratings.csv')
     create_table(connection, r'D:\DE\Homework\HW_3_SQL_python\files\sql\CREATE_TABLE_movies.sql')
     create_table(connection, r'D:\DE\Homework\HW_3_SQL_python\files\sql\CREATE_TABLE_rating.sql')
