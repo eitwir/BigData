@@ -1,6 +1,7 @@
 import re
 import csv
 import argparse
+from collections import Counter
 import collections
 
 
@@ -14,7 +15,7 @@ def get_argpars():
     return parser.parse_args()
 
 
-def get_data_from_csv(file_path):
+def get_data_from_csv(file_path: str):
     with open(file_path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=',')
         data = list(reader)
@@ -31,7 +32,7 @@ def get_the_averages():
     return averages
 
 
-def get_movies_list(averages):
+def get_movies_list(averages: dict):
     result = []
 
     for movies_id, genre, name, year in sorted_list_line(get_data_from_csv('files/movies.csv')):
@@ -41,7 +42,7 @@ def get_movies_list(averages):
     return result
 
 
-def check_year_in_range(year_from, year_to, string):
+def check_year_in_range(year_from, year_to: int, string: str):
     pattern = r'\((\d{4})\)'
     result = True
 
@@ -51,7 +52,7 @@ def check_year_in_range(year_from, year_to, string):
             return result
 
 
-def check_by_regexp(name, string):
+def check_by_regexp(name, string: str):
     result = True
 
     pattern = name
@@ -59,7 +60,7 @@ def check_by_regexp(name, string):
         return result
 
 
-def search_by_genres(genre, arg_genre):
+def search_by_genres(genre, arg_genre: str):
     result = True
 
     if arg_genre == '' and genre != '(no genres listed)':
@@ -68,14 +69,14 @@ def search_by_genres(genre, arg_genre):
         return result
 
 
-def get_and_check_rating(movies_id, rating_dict):
+def get_and_check_rating(movies_id: int, rating_dict: dict):
     if movies_id in rating_dict:
         return round(rating_dict[movies_id], 1)
     else:
         return 0.1
 
 
-def check_by_n(N, genre, count):
+def check_by_n(N: int, genre: str, count: Counter):
     result = True
 
     if N is None:
@@ -86,7 +87,7 @@ def check_by_n(N, genre, count):
             return result
 
 
-def sorted_list_line(data):
+def sorted_list_line(data: list):
     for movie_id, movie_name, movies_genres in data:
         if check_year_in_range(args.year_from, args.year_to, movie_name) and check_by_regexp(args.regexp, movie_name):
             for arg_genre in args.genres.split('|'):
@@ -97,12 +98,12 @@ def sorted_list_line(data):
                         yield movie_id, genre, name, year
 
 
-def show_result(data):
+def show_result(data: list):
     print('genre; name; year; rating')
     count = collections.Counter()
     for genre, name, year, rating in data:
         if check_by_n(args.N, genre, count):
-            print('{}; {}; {}; {}'.format(genre, name, year, rating))
+            print(f'{genre}; {name}; {year}; {rating}')
 
 
 if __name__ == "__main__":
