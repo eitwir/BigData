@@ -16,6 +16,7 @@ def get_argpars():
 
 
 def get_data_from_csv(file_path: str):
+
     with open(file_path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=',')
         data = list(reader)
@@ -25,6 +26,7 @@ def get_data_from_csv(file_path: str):
 def get_the_averages():
     total = collections.defaultdict(float)
     count = collections.defaultdict(int)
+
     for line in get_data_from_csv('files/ratings.csv'):
         total[line[1]] += float(line[2])
         count[line[1]] += 1
@@ -54,8 +56,8 @@ def check_year_in_range(year_from, year_to: int, string: str):
 
 def check_by_regexp(name, string: str):
     result = True
-
     pattern = name
+
     if re.search(pattern, string):
         return result
 
@@ -70,6 +72,7 @@ def search_by_genres(genre, arg_genre: str):
 
 
 def get_and_check_rating(movies_id: int, rating_dict: dict):
+
     if movies_id in rating_dict:
         return round(rating_dict[movies_id], 1)
     else:
@@ -88,6 +91,7 @@ def check_by_n(N: int, genre: str, count: Counter):
 
 
 def sorted_list_line(data: list):
+
     for movie_id, movie_name, movies_genres in data:
         if check_year_in_range(args.year_from, args.year_to, movie_name) and check_by_regexp(args.regexp, movie_name):
             for arg_genre in args.genres.split('|'):
@@ -101,6 +105,7 @@ def sorted_list_line(data: list):
 def show_result(data: list):
     print('genre; name; year; rating')
     count = collections.Counter()
+
     for genre, name, year, rating in data:
         if check_by_n(args.N, genre, count):
             print(f'{genre}; {name}; {year}; {rating}')
