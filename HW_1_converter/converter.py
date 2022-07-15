@@ -13,29 +13,37 @@ def create_arg_parser():
     arg_parse.add_argument('--csv2parquet', nargs=2,
                            metavar=('<src-filename>', '<dst-filename>'),
                            help='convert csv-content to parquet-content')
-
-
     arg_parse.add_argument('--parquet2csv', nargs=2,
                            metavar=('<src-filename>', '<dst-filename>'),
                            help='convert parquet-content to csv-content')
-
-
     arg_parse.add_argument('--get-schema', nargs=1,
                            metavar='<filename>',
                            help='get schema of file: list of arguments and their types')
-
-
     return arg_parse
 
 
 def run_csv2parquet(src_filename, dst_filename):
-    df = pd.read_csv(src_filename, dtype=str)
-    df.to_parquet(dst_filename)
+    try:
+        df = pd.read_csv(src_filename, dtype=str)
+        df.to_parquet(dst_filename)
+    except MemoryError:
+        print('Not enough memory')
+    except TypeError:
+        print('wrong file format')
+    except FileNotFoundError:
+        print('File not found')
 
 
 def run_parquet2csv(src_filename, dst_filename):
-    df = pd.read_parquet(src_filename)
-    df.to_csv(dst_filename, index=False, encoding="UTF-8")
+    try:
+        df = pd.read_parquet(src_filename)
+        df.to_csv(dst_filename, index=False, encoding="UTF-8")
+    except MemoryError:
+        print('not enough memory')
+    except TypeError:
+        print('wrong file format')
+    except FileNotFoundError:
+        print('File not found')
 
 
 def run_get_schema(filename):
@@ -49,7 +57,7 @@ def run_get_schema(filename):
         pfile = pq.read_table(filename)
         print(format(pfile.schema))
     else:
-        print("Wrong extension, try use file with .csv ot .parquet extension")
+        print("Wrong extension, try use file with .csv or .parquet extension")
 
 
 if __name__ == '__main__':

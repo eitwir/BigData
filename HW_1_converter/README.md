@@ -17,6 +17,13 @@ Converter uses a number of open source projects to work properly:
 - [pyarrow.parquet](https://arrow.apache.org/docs/python/parquet.html) — The Apache Parquet project provides a standardized open-source columnar storage format for use in data analysis systems.
 - [sys](https://docs.python.org/3/library/sys.html) — This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
 
+## Prerequisites
+
+What things you need to install the software and how to install them:
+
+```
+pip -r reqirements.txt
+```
 
 ## Usage
 
