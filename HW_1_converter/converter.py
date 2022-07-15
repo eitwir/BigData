@@ -72,8 +72,4 @@ if __name__ == '__main__':
         run_get_schema(*namespace.get_schema)
     else:
         parser.print_help()
-
-
-
-
-
+        
