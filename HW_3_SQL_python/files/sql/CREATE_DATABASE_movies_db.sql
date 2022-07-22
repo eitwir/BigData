@@ -1,2 +1,2 @@
-drop datbase if exists drop movies_db;
-create database             movies_db;
+drop database if exists movies_db;
+create database  movies_db;
