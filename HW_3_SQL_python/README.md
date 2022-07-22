@@ -1,24 +1,19 @@
-# **Description:**
-
-Dir homework3 is a command-line utility that determines the most rated films (by average rating) for each specified genre (if the genre is passed as an argument of the command line).
-The utility return to the console: genre, title, year of release and rating.
-
+# **FILTER MOVIES WITH SQL**
+This console utility allows you to find films by the highest rating with the set parameters.
 ***
+
+# TECH
+- [argparser](https://docs.python.org/3/library/argparse.html) — Parser for command-line options, arguments and sub-commands.
+- [pymysql](https://pypi.org/project/PyMySQL/#id6) — PyMySQL is an interface for connecting to a MySQL database server from Python. It implements the Python Database API v2.0 and contains a pure-Python MySQL client library.
+- [csv](https://pythonworld.ru/moduli/modul-csv.html) — reading and writing CSV files.
+- [re](https://tproger.ru/translations/regular-expression-python/) — regular expressions.
 
 # **Usage:**
 
+Script workflow:
 
-First you need to deploy the server.
-
-```
-python3 server/setup_db.py
-```
-
-After deploying the server, you can already use the console utility get-movies.py:
-
-```
-python3 client/get-movies.py [-N <int>] | [-genres <name_genre|name_genre>] | [-year_from <int> ] | [-year_to <int> ] | [-regexp <films name>]
-```
+1. `setup_db.py`
+2. `get-movies.py [--N <int>] | [--genres <name_genre|name_genre>] | [--year_from <int> ] | [--year_to <int> ] | [--regexp <films name>]`
 
 ***
 
@@ -26,11 +21,12 @@ python3 client/get-movies.py [-N <int>] | [-genres <name_genre|name_genre>] | [-
 
 
 ```
-    * -N [count of the highest rated films for each genre.]
-    * -genres [filter by genre, set by the user. it can be multiple. For example: Comedy|Adventure or Comedy&Adventure.]
-    * -year_from [filter for the years of release of films.]
-    * -year_to [filter for the years of release of films.]
-    * -regexp [filter (regular expression) on the movie name.]
+    * --N [the number of movies you want to select.]
+    * --genres [enter the genres you want to see. It can be multiple. For example: Comedy|Adventure]
+    * --year_from [enter the year from.]
+    * --year_to [enter the year to.] 
+    * --regexp [search movie by matching title.] 
+
 ```
 
 
@@ -39,50 +35,55 @@ python3 client/get-movies.py [-N <int>] | [-genres <name_genre|name_genre>] | [-
 # **EXAMPLES:**
 
 ```
-
-* python3 client/get-movies.py -N 4 -genres 'Action'
-
-
-    # console return:
-
-    genre;title;year;rating
-    Action;Tombstone ;1993;5.00
-    Action;Star Wars: Episode IV - A New Hope ;1977;5.00
-    Action;Rob Roy ;1995;5.00
-    Action;Desperado ;1995;5.00
-
-
-
-
-*  python3 client/get-movies.py -N 4 -genres 'Drama|Adventure' -year_from 2015 -year_to 2020
-
-
-    # console return:
-
-    genre;title;year;rating
-    Drama;Wonder ;2017;5.00
-    Drama;Inside Out ;2015;5.00
-    Drama;Three Billboards Outside Ebbing, Missouri ;2017;5.00
-    Drama;The Martian ;2015;5.00
-    Adventure;Mad Max: Fury Road ;2015;5.00
-    Adventure;Rogue One: A Star Wars Story ;2016;5.00
-    Adventure;Spectre ;2015;5.00
-    Adventure;Star Wars: Episode VII - The Force Awakens ;2015;5.00
+python get-movies.py --N 10 --genres "Comedy" --year_from 1999 --year_to 2005
+ 
+ # console return:
+ 
+genre; title; year; rating
+Comedy; Boy Eats Girl ; 2005; 5.00
+Comedy; George Carlin: Life Is Worth Losing ; 2005; 5.00
+Comedy; Guy X ; 2005; 5.00
+Comedy; Stuart Little 3: Call of the Wild ; 2005; 5.00
+Comedy; Alesha Popovich and Tugarin the Dragon ; 2004; 5.00
+Comedy; Calcium Kid, The ; 2004; 5.00
+Comedy; Dylan Moran: Monster ; 2004; 5.00
+Comedy; Go for Zucker! (Alles auf Zucker!) ; 2004; 5.00
+Comedy; Palindromes ; 2004; 5.00
+Comedy; Saving Face ; 2004; 5.00
 
 
+python get-movies.py --N 7 --genres "Action|Adventure" --year_from 2004 --year_to 2008
+
+ # console return:
+
+genre; title; year; rating
+Action; Love Exposure (Ai No Mukidashi) ; 2008; 5.00
+Action; Max Manus ; 2008; 5.00
+Action; Tekkonkinkreet (Tekkon kinkurîto) ; 2006; 4.63
+Action; Assembly (Ji jie hao) (; 2007; 4.50
+Action; Doctor Who: Voyage Of The Damned ; 2007; 4.50
+Action; Rise of the Footsoldier ; 2007; 4.50
+Action; Tae Guk Gi: The Brotherhood of War (Taegukgi hwinalrimyeo) ; 2004; 4.50
+Adventure; Asterix and the Vikings (Astérix et les Vikings) ; 2006; 5.00
+Adventure; The Fox and the Hound 2 ; 2006; 5.00
+Adventure; Palindromes ; 2004; 5.00
+Adventure; Tekkonkinkreet (Tekkon kinkurîto) ; 2006; 4.63
+Adventure; BURN-E ; 2008; 4.50
+Adventure; Golden Door (Nuovomondo) ; 2006; 4.50
+Adventure; Jack-Jack Attack ; 2005; 4.50
 
 
-*  python3 client/get-movies.py -regexp Love -N 3 -genres 'Romance'
+*  python get-movies.py --N 3 --genres "Drama"    
 
+ # console return:
 
-    # console return:
-
-    genre;title;year;rating
-    Romance;Only Lovers Left Alive ;2013;5.00
-    Romance;Love Actually ;2003;5.00
-    Romance;Everyone Says I Love You ;1996;5.00
-
-
+genre; title; year; rating
+Drama; Loving Vincent ; 2017; 5.00
+Drama; All Yours ; 2016; 5.00
+Drama; Indignation ; 2016; 5.00
 ```
-
 ***
+
+# NOTE
+You can download the data from the link: https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+
