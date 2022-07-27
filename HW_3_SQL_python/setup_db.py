@@ -96,8 +96,8 @@ if __name__ == "__main__":
                                               '1234567890',
                                               r'./files/sql/CREATE_DATABASE_movies_db.sql')
     connection = get_connection_to_db('localhost', 'root', '1234567890', 'movies_db')
-    movies = get_list_from_csv_file('./Data/movies.csv')
-    rating = get_list_from_csv_file('./Data/ratings.csv')
+    movies = get_movies_list('./Data/movies.csv')
+    rating = get_movies_list('./Data/ratings.csv')
     create_table(connection, './files/sql/CREATE_TABLE_movies.sql')
     create_table(connection, './files/sql/CREATE_TABLE_rating.sql')
     fill_movies_table(connection, movies, './files/sql/FILL_MOVIES_TABLE.sql')
