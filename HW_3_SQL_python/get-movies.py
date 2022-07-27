@@ -31,7 +31,7 @@ def get_connection_to_db(host, user, passwd, db_name):
     return connection
 
 
-def show_result(connection, sql_script_path, args):
+def print_result(connection, sql_script_path, args):
     print('genre; title; year; rating')
     genres = args.genres.split("|")
 
@@ -52,4 +52,4 @@ def show_result(connection, sql_script_path, args):
 if __name__ == "__main__":
     args = get_argpars()
     connection = get_connection_to_db(host, user, passwd, db_name)
-    show_result(connection, r'./files/sql/GET_RESULT.sql', args)
+    print_result(connection, r'./files/sql/GET_RESULT.sql', args)
