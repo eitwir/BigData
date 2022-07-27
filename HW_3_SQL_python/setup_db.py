@@ -53,7 +53,7 @@ def create_table(connection, sql_script_path):
         print(f"The error '{e}' occurred")
 
 
-def get_list_from_csv_file(csv_file_path):
+def get_movies_list(csv_file_path):
     data = []
     with open(csv_file_path, encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=',')
