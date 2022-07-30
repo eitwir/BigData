@@ -53,9 +53,9 @@ def create_table(connection, sql_script_path):
         print(f"The error '{e}' occurred")
 
 
-def get_movies_list(csv_file_path):
+def get_list_from_csv_file(csv_file_path):
     data = []
-    with open(csv_file_path, encoding='utf-8') as file:
+    with open(csv_file_path, newline='') as file:
         reader = csv.reader(file, delimiter=',')
         for row in reader:
             data.append(row)
@@ -76,14 +76,14 @@ def fill_movies_table(connection, movies_data, sql_script_path):
             for genre in list_genres:
                 with open(sql_script_path) as file:
                     script = file.read()
-                    cursor.execute(script.format(int(movie_id), connection.escape(title[:-6]), int(year),
+                    cursor.execute(script.format(int(movie_id), connection.escape(title[:-7]), int(year),
                                                  connection.escape(genre)))
                 connection.commit()
 
 
 def fill_rating_table(connection, rating_data, sql_script_path):
     with connection.cursor() as cursor:
-        for _, movie_id, rating, _ in rating_data:
+        for _, movie_id, rating , _ in rating_data:
             with open(sql_script_path) as file:
                 filling_script = file.read()
                 cursor.execute(filling_script.format(int(movie_id), float(rating)))
@@ -96,8 +96,8 @@ if __name__ == "__main__":
                                               '1234567890',
                                               r'./files/sql/CREATE_DATABASE_movies_db.sql')
     connection = get_connection_to_db('localhost', 'root', '1234567890', 'movies_db')
-    movies = get_movies_list('./Data/movies.csv')
-    rating = get_movies_list('./Data/ratings.csv')
+    movies = get_list_from_csv_file('./Data/movies.csv')
+    rating = get_list_from_csv_file('./Data/ratings.csv')
     create_table(connection, './files/sql/CREATE_TABLE_movies.sql')
     create_table(connection, './files/sql/CREATE_TABLE_rating.sql')
     fill_movies_table(connection, movies, './files/sql/FILL_MOVIES_TABLE.sql')

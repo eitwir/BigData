@@ -1,6 +1,6 @@
 use movies_db;
 
-create table avg_rating as
+create table avg_rating AS
 
 select distinct     movie_id,
                     avg(rating) as avgrating

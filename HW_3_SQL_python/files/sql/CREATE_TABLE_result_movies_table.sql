@@ -1,6 +1,6 @@
 use movies_db;
 
-create table        result_movies_table as
+create table        result_movies_table AS
 
 select distinct     movies.movie_id,
                     movies.genres,
@@ -14,9 +14,9 @@ join                avg_rating
 
 on                  movies.movie_id = avg_rating.movie_id
 
-order by            movies.movie_id,
+order by           movies.movie_id,
                     movies.genres,
-                    avg_rating.avgrating desc;
+                    avg_rating.avgrating DESC;
 
 
 

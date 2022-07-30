@@ -1,5 +1,5 @@
 use movies_db;
 
-insert into        rating     (movie_id, rating)
+insert   into      rating     (movie_id, rating)
 values                        ({}, {});
 
