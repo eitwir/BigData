@@ -34,16 +34,6 @@ pip -r reqirements.txt
 
 ***
 
-# **OPTIONS:**
-
-    * --N [count of the highest rated films for each genre.] <br>
-    * --genres [filter by genre, set by the user. it can be multiple. For example: Comedy|Adventure or Comedy&Adventure.] <br>
-    * --year_from [filter for the years of release of films.] <br>
-    * --year_to [filter for the years of release of films.] <br>
-    * --regexp [filter (regular expression) on the movie name.] <br>
-
-***
-
 # **EXAMPLES:**
 
 ```
