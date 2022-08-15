@@ -12,7 +12,7 @@ This console utility allows you to find films by the highest rating with the set
 # USAGE
 Script workflow:
 
-`cat files/movies.csv | python mapper.py [--genres --year_from --year_to --regexp] | python shuffle.py | python sort.py | python reduce.py [--N]`
+`cat Data/movies.csv | python mapper.py [--genres --year_from --year_to --regexp] | python shuffle.py | python sort.py | python reduce.py [--N]`
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ pip -r reqirements.txt
 ```
 
 
-$  cat files/movies.csv | python mapper.py --genres "Action" | python shuffle.py | python sort.py | python reducer.py --N 3
+$  cat Data/movies.csv | python mapper.py --genres "Action" | python shuffle.py | python sort.py | python reducer.py --N 3
 
 
 	# console return:
@@ -53,7 +53,7 @@ $  cat files/movies.csv | python mapper.py --genres "Action" | python shuffle.py
 
 
 
-$ cat files/movies.csv | python mapper.py --year_from 1995 --year_to 2001 --genres 'Adventure|Action' | python shuffle.py | python sort.py | python reducer.py --N 3
+$ cat Data/movies.csv | python mapper.py --year_from 1995 --year_to 2001 --genres 'Adventure|Action' | python shuffle.py | python sort.py | python reducer.py --N 3
 
 
 	# console return:
