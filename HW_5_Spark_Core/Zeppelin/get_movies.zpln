@@ -1,0 +1,930 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "filter arguments",
+      "text": "%spark.pyspark\n\nARG_GENRES = 'Sci-Fi|Action'       #by default = '' \nYEAR_TO = 2007                     #by default = 2030\nYEAR_FROM = 1900                   #by default = 1800 \nREGEXP = 'Terminator'              #by default = '' \nN = 3                              #by default = None ",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:15+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369730_19368483",
+      "id": "20211214-180929_1903120551",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:15+0000",
+      "dateFinished": "2021-12-17T22:26:15+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:2990"
+    },
+    {
+      "title": "delete files and load files",
+      "text": "%sh \n\nhdfs dfs -rm -r -f \"/result\"\nhdfs dfs -rm -r -f \"/movies.csv\"\nhdfs dfs -rm -r -f \"/ratings.csv\"\nrm -r -f \"ml-latest-small.zip\"\nrm -r -f \"ml-latest-small\"\n\nwget -c https://files.grouplens.org/datasets/movielens/ml-latest-small.zip\nunzip ml-latest-small.zip\nhdfs dfs -put ~/ml-latest-small/movies.csv ~/ml-latest-small/ratings.csv /\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:15+0000",
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Deleted /result\nDeleted /movies.csv\nDeleted /ratings.csv\n--2021-12-17 22:26:22--  https://files.grouplens.org/datasets/movielens/ml-latest-small.zip\nResolving files.grouplens.org (files.grouplens.org)... 128.101.65.152\nConnecting to files.grouplens.org (files.grouplens.org)|128.101.65.152|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 978202 (955K) [application/zip]\nSaving to: ‘ml-latest-small.zip’\n\n     0K .......... .......... .......... .......... ..........  5% 1.29M 1s\n    50K .......... .......... .......... .......... .......... 10% 2.60M 0s\n   100K .......... .......... .......... .......... .......... 15% 2.61M 0s\n   150K .......... .......... .......... .......... .......... 20%  160M 0s\n   200K .......... .......... .......... .......... .......... 26%  106M 0s\n   250K .......... .......... .......... .......... .......... 31% 84.4M 0s\n   300K .......... .......... .......... .......... .......... 36% 2.77M 0s\n   350K .......... .......... .......... .......... .......... 41%  201M 0s\n   400K .......... .......... .......... .......... .......... 47%  187M 0s\n   450K .......... .......... .......... .......... .......... 52%  216M 0s\n   500K .......... .......... .......... .......... .......... 57%  202M 0s\n   550K .......... .......... .......... .......... .......... 62%  210M 0s\n   600K .......... .......... .......... .......... .......... 68% 2.75M 0s\n   650K .......... .......... .......... .......... .......... 73%  296M 0s\n   700K .......... .......... .......... .......... .......... 78%  261M 0s\n   750K .......... .......... .......... .......... .......... 83%  251M 0s\n   800K .......... .......... .......... .......... .......... 88%  252M 0s\n   850K .......... .......... .......... .......... .......... 94%  253M 0s\n   900K .......... .......... .......... .......... .......... 99%  239M 0s\n   950K .....                                                 100%  164M=0.1s\n\n2021-12-17 22:26:22 (8.15 MB/s) - ‘ml-latest-small.zip’ saved [978202/978202]\n\nArchive:  ml-latest-small.zip\n   creating: ml-latest-small/\n  inflating: ml-latest-small/links.csv  \n  inflating: ml-latest-small/tags.csv  \n  inflating: ml-latest-small/ratings.csv  \n  inflating: ml-latest-small/README.txt  \n  inflating: ml-latest-small/movies.csv  \n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_401949564",
+      "id": "20211214-180929_655039750",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:15+0000",
+      "dateFinished": "2021-12-17T22:26:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2991"
+    },
+    {
+      "title": "import re",
+      "text": "%spark.pyspark\n\nimport re",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:25+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_145224579",
+      "id": "20211214-180929_745179944",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:26+0000",
+      "dateFinished": "2021-12-17T22:26:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2992"
+    },
+    {
+      "title": "function to get list from string",
+      "text": "\n%spark.pyspark\n\ndef get_list_line_from_original_string(original_line):\n    movieID, title_genres = original_line.split(',', maxsplit=1)\n    title, genres = title_genres.rsplit(',', maxsplit=1)\n    if '\"' in title:\n        title = title[1:-1]\n    movie = [movieID, [title, genres]]\n    return movie",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:26+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_599574136",
+      "id": "20211214-180929_446290010",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:26+0000",
+      "dateFinished": "2021-12-17T22:26:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2993"
+    },
+    {
+      "title": "filter by regexp",
+      "text": "\n%spark.pyspark\n\ndef filter_by_regexp(line):\n    _,(title,_) = line\n    pattern = REGEXP\n    if re.search(pattern, title):\n        return True ",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:26+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_2008601501",
+      "id": "20211214-180929_804143667",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:26+0000",
+      "dateFinished": "2021-12-17T22:26:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2994"
+    },
+    {
+      "title": "filter by year",
+      "text": "%spark.pyspark\n\ndef filter_by_year(line):\n    _,(title,_) = line\n    pattern = r'\\(\\d{4}\\)'\n    if re.search(pattern, title):\n        year = int(re.search(r'\\(\\d{4}\\)', title).group(0)[1:-1])\n        if YEAR_FROM <= year <= YEAR_TO:\n            return True",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:26+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_56154621",
+      "id": "20211214-180929_1358072293",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:26+0000",
+      "dateFinished": "2021-12-17T22:26:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2995"
+    },
+    {
+      "title": "get movies rdd ",
+      "text": "%spark.pyspark\n\noriginal_movies_rdd = sc.textFile('/movies.csv')\nlist_line_movies_rdd = original_movies_rdd.map(lambda string: get_list_line_from_original_string(string))\nmovies_rdd = list_line_movies_rdd.filter(lambda list: filter_by_regexp(list) and filter_by_year(list))\n\nmovies_rdd.take(5)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:26+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[['589', ['Terminator 2: Judgment Day (1991)', 'Action|Sci-Fi']], ['1240', ['Terminator, The (1984)', 'Action|Sci-Fi|Thriller']], ['6537', ['Terminator 3: Rise of the Machines (2003)', 'Action|Adventure|Sci-Fi']]]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=12",
+              "$$hashKey": "object:3888"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=13",
+              "$$hashKey": "object:3889"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_598951372",
+      "id": "20211214-180929_683240216",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:26+0000",
+      "dateFinished": "2021-12-17T22:26:27+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2996"
+    },
+    {
+      "title": "function to get list with movieID and rating",
+      "text": "%spark.pyspark\n\ndef get_list_from_rating_string(string):\n    _,movieId, rating,_ = string.split(',')\n    return [movieId, float(rating)]",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:27+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369731_2003097084",
+      "id": "20211214-180929_2092313949",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:34+0000",
+      "dateFinished": "2021-12-17T22:26:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2997"
+    },
+    {
+      "title": "get rating rdd",
+      "text": "\n%spark.pyspark\n\noriginal_rating_rdd = sc.textFile('/ratings.csv').filter(lambda x: x.split(',')[1] != 'movieId') # original rating rdd without header\nlist_line_rating_rdd = original_rating_rdd.map(lambda string: get_list_from_rating_string(string))\ngrouped_rating_rdd = list_line_rating_rdd.groupByKey()\nrating_rdd = grouped_rating_rdd.map(lambda x: [x[0], round(sum(x[1]) / len(x[1]), 2)])\n\nrating_rdd.take(5)\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:34+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[['1', 3.92], ['50', 4.24], ['70', 3.51], ['110', 4.03], ['157', 2.86]]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=14",
+              "$$hashKey": "object:3993"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_77716894",
+      "id": "20211214-180929_554964770",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:34+0000",
+      "dateFinished": "2021-12-17T22:26:35+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2998"
+    },
+    {
+      "title": "join movies rdd and rating rdd",
+      "text": "%spark.pyspark\n\njoined_rdd = movies_rdd.join(rating_rdd)\n\njoined_rdd.take(5)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:35+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('589', (['Terminator 2: Judgment Day (1991)', 'Action|Sci-Fi'], 3.97)), ('6537', (['Terminator 3: Rise of the Machines (2003)', 'Action|Adventure|Sci-Fi'], 3.04)), ('1240', (['Terminator, The (1984)', 'Action|Sci-Fi|Thriller'], 3.9))]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=15",
+              "$$hashKey": "object:4051"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=16",
+              "$$hashKey": "object:4052"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_1057782797",
+      "id": "20211214-180929_1710038852",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:35+0000",
+      "dateFinished": "2021-12-17T22:26:35+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:2999"
+    },
+    {
+      "title": "filter by genre",
+      "text": "%spark.pyspark\n\ndef filter_by_genres(genre, arg_genre):\n    if arg_genre == '' and genre != '(no genres listed)':\n        return True\n    elif genre == arg_genre and genre != '(no genres listed)':\n        return True",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:35+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_2116690134",
+      "id": "20211214-180929_107956554",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:36+0000",
+      "dateFinished": "2021-12-17T22:26:36+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3000"
+    },
+    {
+      "title": "yield reorgonize line ",
+      "text": "%spark.pyspark\n\ndef reorgonize_line(line):\n    _,((name_with_year, genres), rating) = line\n    \n    year = int(re.search(r'\\(\\d{4}\\)', name_with_year).group(0)[1:-1])\n    name = name_with_year[:-7]\n    \n    for genre in genres.split('|'):\n        for arg_genre in ARG_GENRES.split('|'):\n            if filter_by_genres(genre, arg_genre) :\n                yield [genre, [name, year, rating]]",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:36+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_1705643342",
+      "id": "20211214-180929_1274953759",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:36+0000",
+      "dateFinished": "2021-12-17T22:26:36+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3001"
+    },
+    {
+      "title": "sort joined rdd",
+      "text": "%spark.pyspark\n\nreorgonize_joined_rdd = joined_rdd.flatMap(reorgonize_line)\nsorted_reorgonize_joined_rdd = reorgonize_joined_rdd.sortBy(lambda x: (x[0], -x[1][2], -x[1][1], x[1][0])) # sort_by: genres, ratings, year, name\n\nsorted_reorgonize_joined_rdd.take(5)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:36+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[['Action', ['Terminator 2: Judgment Day', 1991, 3.97]], ['Action', ['Terminator, The', 1984, 3.9]], ['Action', ['Terminator 3: Rise of the Machines', 2003, 3.04]], ['Sci-Fi', ['Terminator 2: Judgment Day', 1991, 3.97]], ['Sci-Fi', ['Terminator, The', 1984, 3.9]]]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=17",
+              "$$hashKey": "object:4198"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=18",
+              "$$hashKey": "object:4199"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=19",
+              "$$hashKey": "object:4200"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=20",
+              "$$hashKey": "object:4201"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_1035145284",
+      "id": "20211214-180929_1246950213",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:38+0000",
+      "dateFinished": "2021-12-17T22:26:39+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3002"
+    },
+    {
+      "title": "groupe joined rdd",
+      "text": "%spark.pyspark\n\ngrouped_joined_rdd = sorted_reorgonize_joined_rdd.groupByKey()\nresult_reorgonize_rdd = grouped_joined_rdd.sortBy(lambda x: x[0]) # x[0] == genre\n\nresult_reorgonize_rdd.take(5)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:39+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('Action', <pyspark.resultiterable.ResultIterable object at 0x7f12ea3fe990>), ('Sci-Fi', <pyspark.resultiterable.ResultIterable object at 0x7f12ea3fe1d0>)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=21",
+              "$$hashKey": "object:4271"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=22",
+              "$$hashKey": "object:4272"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=23",
+              "$$hashKey": "object:4273"
+            },
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=24",
+              "$$hashKey": "object:4274"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_558919977",
+      "id": "20211214-180929_1204339316",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:39+0000",
+      "dateFinished": "2021-12-17T22:26:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3003"
+    },
+    {
+      "title": "get rows count of result rdd",
+      "text": "%spark.pyspark\n\ndef get_n(line):\n    if N is None:\n        return len(line)\n    else:\n        if N <= len(line):\n            return N\n        elif N > len(line):\n            return len(line)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:40+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369732_271050301",
+      "id": "20211214-180929_991033054",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:43+0000",
+      "dateFinished": "2021-12-17T22:26:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3004"
+    },
+    {
+      "title": "yield result values in csv-like format",
+      "text": "%spark.pyspark\n\ndef chec_by_n(line):\n    genre, values = line\n    \n    for name, year, rating in list(values)[:get_n(values)]:\n        yield '{};{};{};{}'.format(genre, name, year, rating)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:43+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369733_1957509641",
+      "id": "20211214-180929_47621915",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:43+0000",
+      "dateFinished": "2021-12-17T22:26:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3005"
+    },
+    {
+      "title": "get result rdd",
+      "text": "%spark.pyspark\n\nresult = result_reorgonize_rdd.flatMap(chec_by_n)\nresult.collect()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:43+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "['Action;Terminator 2: Judgment Day;1991;3.97', 'Action;Terminator, The;1984;3.9', 'Action;Terminator 3: Rise of the Machines;2003;3.04', 'Sci-Fi;Terminator 2: Judgment Day;1991;3.97', 'Sci-Fi;Terminator, The;1984;3.9', 'Sci-Fi;Terminator 3: Rise of the Machines;2003;3.04']\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=25",
+              "$$hashKey": "object:4428"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369733_98915746",
+      "id": "20211214-180929_1598268639",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:43+0000",
+      "dateFinished": "2021-12-17T22:26:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3006"
+    },
+    {
+      "title": "save to hdfs",
+      "text": "%spark.pyspark\n\nresult.saveAsTextFile('/result')",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:44+0000",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://home666-m.us-central1-c.c.bionic-aspect-332309.internal:33865/jobs/job?id=26",
+              "$$hashKey": "object:4476"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369733_1357610325",
+      "id": "20211214-180929_1587086881",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:44+0000",
+      "dateFinished": "2021-12-17T22:26:44+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3007"
+    },
+    {
+      "title": "cat result",
+      "text": "%sh \n\nhdfs dfs -cat /result/*\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-17T22:26:44+0000",
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Action;Terminator 2: Judgment Day;1991;3.97\nAction;Terminator, The;1984;3.9\nAction;Terminator 3: Rise of the Machines;2003;3.04\nSci-Fi;Terminator 2: Judgment Day;1991;3.97\nSci-Fi;Terminator, The;1984;3.9\nSci-Fi;Terminator 3: Rise of the Machines;2003;3.04\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639505369733_397132790",
+      "id": "20211214-180929_1779088426",
+      "dateCreated": "2021-12-14T18:09:29+0000",
+      "dateStarted": "2021-12-17T22:26:57+0000",
+      "dateFinished": "2021-12-17T22:27:00+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:3008"
+    }
+  ],
+  "name": "get_movies",
+  "id": "2GQKPGG4K",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.1-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/get_movies"
+}
