@@ -55,7 +55,7 @@ def create_table(connection, sql_script_path):
 
 def get_list_from_csv_file(csv_file_path):
     data = []
-    with open(csv_file_path, newline='') as file:
+    with open(csv_file_path, newline='', encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=',')
         for row in reader:
             data.append(row)

@@ -15,6 +15,14 @@ Script workflow:
 1. `setup_db.py`
 2. `get-movies.py [--N <int>] | [--genres <name_genre|name_genre>] | [--year_from <int> ] | [--year_to <int> ] | [--regexp <films name>]`
 
+## Prerequisites
+
+What things you need to install the software and how to install them:
+
+```
+pip -r reqirements.txt
+```
+
 ***
 
 # **OPTIONS:**

@@ -3,6 +3,10 @@ from config import host, user, passwd, db_name
 import pymysql
 from pymysql.constants import CLIENT
 from pymysql import Error
+import time
+
+
+start_time = time.time()
 
 
 def get_argpars():
@@ -53,3 +57,6 @@ if __name__ == "__main__":
     args = get_argpars()
     connection = get_connection_to_db(host, user, passwd, db_name)
     print_result(connection, r'./files/sql/GET_RESULT.sql', args)
+
+
+print("--- %s seconds ---" % (time.time() - start_time))

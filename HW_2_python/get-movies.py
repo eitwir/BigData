@@ -3,6 +3,10 @@ import csv
 import argparse
 from collections import Counter
 import collections
+import time
+
+
+start_time = time.time()
 
 
 def get_argpars():
@@ -114,3 +118,6 @@ if __name__ == "__main__":
     averages = get_the_averages()
     result_list = get_movies_list(averages)
     show_result(result_list)
+
+
+print("--- %s seconds ---" % (time.time() - start_time))
