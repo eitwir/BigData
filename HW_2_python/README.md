@@ -1,6 +1,7 @@
 # **FILTER MOVIES**
 This console utility allows you to find films by the highest rating with the set parameters.
 ***
+
 # TECH
 - [argparser](https://docs.python.org/3/library/argparse.html) — Parser for command-line options, arguments and sub-commands.
 - [collections](https://pythonworld.ru/moduli/modul-collections.html) — provides specialized data types based on dictionaries, tuples, sets, lists.
